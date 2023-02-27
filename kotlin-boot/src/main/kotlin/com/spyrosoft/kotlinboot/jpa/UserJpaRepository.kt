@@ -11,15 +11,24 @@ import org.springframework.data.repository.CrudRepository
  */
 @Entity(name = "app_user")
 class User(
-    firstname: String,
+    val firstname: String,
     val lastname: String,
     val email: String,
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_user_id_seq")
-    @SequenceGenerator(name = "app_user_id_seq",  sequenceName = "app_user_id_seq", allocationSize = 1)
-    @Id var id: Long?
-){
-    val firstname = firstname
-        get() = field.replaceFirstChar { it.uppercase() }
+    address: String,
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "app_user_id_seq"
+    ) @SequenceGenerator(
+        name = "app_user_id_seq",
+        sequenceName = "app_user_id_seq",
+        allocationSize = 1
+    ) @Id var id: Long? = null,
+) {
+    var address = address
+        set(value) {
+            field = value.replaceFirstChar { it.uppercase() }
+        }
+
 }
 
 interface UserJpaRepository : CrudRepository<User, Long>

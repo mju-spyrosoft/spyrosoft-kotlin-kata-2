@@ -13,7 +13,6 @@ class KataController(
 ) { //Btw by kotlin collections are readonly BUT they are not immutable
     //If you want immutability use https://github.com/Kotlin/kotlinx.collections.immutable
 
-
     @GetMapping("/hey")
     fun heyKata(@RequestParam name: String?): String =
         if (name == null) "Hello again kata"
@@ -24,7 +23,17 @@ class KataController(
 
     @PostMapping("/user")
     fun createUser(@RequestBody body: CreateUserBody): User {
-        return userRepository.save(User(body.firstname, body.lastname, body.email, null))
+        return userRepository.save(User(body.firstname, body.lastname, body.email, body.address, null))
+    }
+
+    @PostMapping("/user/{id}/address")
+    fun changeAddress(@PathVariable id: String, @RequestBody body: ChangeAddressBody): User {
+        val user = userRepository.findById(1).orElseThrow {
+            IllegalStateException()
+        }
+        user.address = body.address
+
+        return userRepository.save(user)
     }
 
     @PostMapping("/sign")
@@ -37,12 +46,11 @@ class KataController(
     fun callExternalApi(): ApiConfiguration {
         return apiConfiguration
     }
-
-
 }
 
 data class PersonSign(val name: String, val message: String?)
 class BookSignResponseBody(val message: String)
-class CreateUserBody(val firstname: String, val lastname: String, val email: String)
+class CreateUserBody(val firstname: String, val lastname: String, val email: String, val address: String)
+class ChangeAddressBody(val address: String)
 
 
