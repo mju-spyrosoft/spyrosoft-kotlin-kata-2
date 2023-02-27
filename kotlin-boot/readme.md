@@ -13,7 +13,7 @@ Simple server with spring data jpa and spring web.
 ### Conclusions
 - Works fine, easy to set up.  
 - Support for kotlin null safety is there but requires plugins
-- Not everything integrates with kotlin that well. [Example](https://github.com/bastman/spring-kotlin-jooq) ~~jooq generated code is in java and is not null safe~~ [nevermind](https://www.jooq.org/doc/latest/manual/code-generation/kotlingenerator/)  
+- Not everything integrates with kotlin that well. [Example](https://github.com/bastman/spring-kotlin-jooq) ~~jooq generated code is in java and is not null safe~~ [it will be typesafe in 3.18](https://github.com/jOOQ/jOOQ/issues/10212)  
 - Spring 5 supports bean definition kotlin DSL, But... spring boot does not and will not support anytime soon
     - [Example repo](https://github.com/sdeleuze/spring-kotlin-functional/blob/master/src/main/kotlin/functional/Beans.kt)
     - [docs](https://docs.spring.io/spring-framework/docs/5.0.0.RELEASE/spring-framework-reference/kotlin.html#bean-definition-dsl)

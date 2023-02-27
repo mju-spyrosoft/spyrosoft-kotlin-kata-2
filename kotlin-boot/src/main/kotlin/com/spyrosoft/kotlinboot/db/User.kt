@@ -1,7 +1,6 @@
-package com.spyrosoft.kotlinboot.jpa
+package com.spyrosoft.kotlinboot.db
 
 import jakarta.persistence.*
-import org.springframework.data.repository.CrudRepository
 
 /**
  * Kotlin has classes andd their members final by default. For jpa they have "kotlin-jpa" plugin that automatically gets installed
@@ -14,7 +13,7 @@ class User(
     val firstname: String,
     val lastname: String,
     val email: String,
-    address: String,
+    address: String?,
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
         generator = "app_user_id_seq"
@@ -26,11 +25,7 @@ class User(
 ) {
     var address = address
         set(value) {
-            field = value.replaceFirstChar { it.uppercase() }
+            field = value?.replaceFirstChar { it.uppercase() }
         }
 
 }
-
-interface UserJpaRepository : CrudRepository<User, Long>
-
-

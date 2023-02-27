@@ -1,14 +1,18 @@
 package com.spyrosoft.kotlinboot
 
-import com.spyrosoft.kotlinboot.jpa.User
+import com.spyrosoft.kotlinboot.db.User
+import com.spyrosoft.kotlinboot.db.UserJooqRepository
 import com.spyrosoft.kotlinboot.jpa.UserJpaRepository
 import org.springframework.web.bind.annotation.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 @RestController
 @RequestMapping("/kata")
 class KataController(
     private val guestBook: MutableList<PersonSign> = ArrayList(),
     private val userRepository: UserJpaRepository,
+    private val userJooqRepository: UserJooqRepository,
     private val apiConfiguration: ApiConfiguration
 ) { //Btw by kotlin collections are readonly BUT they are not immutable
     //If you want immutability use https://github.com/Kotlin/kotlinx.collections.immutable
@@ -19,7 +23,13 @@ class KataController(
         else "Hello again $name, welcome nice to see you at kata"
 
     @GetMapping("/who-am-i")
-    fun whoAmI(@RequestParam id: Long) = userRepository.findById(id)
+    fun whoAmI(@RequestParam id: Long): Optional<User> {
+        return userRepository.findById(id)
+    }
+    @GetMapping("/jooq/who-am-i")
+    fun whoAmIJooq(@RequestParam id: Long): User? {
+        return userJooqRepository.findById(id);
+    }
 
     @PostMapping("/user")
     fun createUser(@RequestBody body: CreateUserBody): User {

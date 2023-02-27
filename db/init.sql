@@ -1,8 +1,8 @@
 create table app_user
 (
-    firstname varchar(50),
-    lastname  varchar(50),
-    email     varchar(50),
+    firstname varchar(50) not null ,
+    lastname  varchar(50) not null ,
+    email     varchar(50) not null ,
     address   varchar(50),
     id        serial PRIMARY KEY
 );
