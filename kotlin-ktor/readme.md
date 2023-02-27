@@ -10,7 +10,7 @@ Simple server with routing and db calls same as with kotlin boot
 
 ### Conclusions
 - Everything is explicit. You want something? you have to explicitly state it
-- Very little annotation magic good?/bad?. Everything is done **in code**
+- Very little annotation magic good?/bad?. Everything is done **in code**. Why is it good.
 - Does not come with any dependency injection. Either to it manually or use something for it e.g. [koin](https://insert-koin.io/)
 - Built on corutines, no thread per request (like in webflux). Asynchronous from ground up
 - Every possible question for spring is already answered by someone in internet. With ktor well...
@@ -19,5 +19,15 @@ Simple server with routing and db calls same as with kotlin boot
 
 
 TODO
+- how kotlin interop works
+- Gralvm
+- how kotlin data classes are different from java records
+- orm to ktor?
+- add jooq to ktor?
+- Better conclusions and opinions
+
+
+Bonuses
+- DSL
+- corutines
 - companion objects
-- coroutines
