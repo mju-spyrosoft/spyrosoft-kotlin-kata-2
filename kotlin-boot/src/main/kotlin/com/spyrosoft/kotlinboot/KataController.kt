@@ -5,7 +5,6 @@ import com.spyrosoft.kotlinboot.db.UserJooqRepository
 import com.spyrosoft.kotlinboot.jpa.UserJpaRepository
 import org.springframework.web.bind.annotation.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 @RestController
 @RequestMapping("/kata")
@@ -26,6 +25,7 @@ class KataController(
     fun whoAmI(@RequestParam id: Long): Optional<User> {
         return userRepository.findById(id)
     }
+
     @GetMapping("/jooq/who-am-i")
     fun whoAmIJooq(@RequestParam id: Long): User? {
         return userJooqRepository.findById(id);
@@ -62,5 +62,3 @@ data class PersonSign(val name: String, val message: String?)
 class BookSignResponseBody(val message: String)
 class CreateUserBody(val firstname: String, val lastname: String, val email: String, val address: String)
 class ChangeAddressBody(val address: String)
-
-

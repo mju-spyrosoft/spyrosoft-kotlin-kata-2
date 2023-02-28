@@ -15,7 +15,8 @@ class UserJooqRepository(private val dslContext: DSLContext) {
                 .from(APPUSER)
                 .where(APPUSER.ID.eq(id.toInt()))
                 .fetchAny(Records.mapping { address, appUserId, firstName, lastName, email ->
-                    User(firstName!!, lastName!!, email!!, address, appUserId?.toLong())            //sad Not null from schema is not respected YET, https://github.com/jOOQ/jOOQ/issues/10212
+                    User(firstName!!, lastName!!, email!!, address, appUserId?.toLong())        //Very sad face, no null safety support from jooq (YET)
+                                                                                                //https://github.com/jOOQ/jOOQ/issues/10212
                 })
     }
 }
