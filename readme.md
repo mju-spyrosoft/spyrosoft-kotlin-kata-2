@@ -15,7 +15,8 @@ Don't worry if you missed first kata, you still should be able to listen, I'll e
     - Docs
       - [docs-spring](https://docs.spring.io/spring-framework/docs/5.0.0.RELEASE/spring-framework-reference/kotlin.html#null-safety)  
       - [tutorial](https://spring.io/guides/tutorials/spring-boot-kotlin/)  
-      - [tutorial 2](https://kotlinlang.org/docs/jvm-get-started-spring-boot.html)  
+      - [tutorial 2](https://kotlinlang.org/docs/jvm-get-started-spring-boot.html)
+  - Kotlin interop 
   - Jetbrains Ktor
   - Other mentions
     - [http4k](https://www.http4k.org/)
