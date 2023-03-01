@@ -1,10 +1,10 @@
-package com.example.demo;
+package com.spyrosoft.addingkotlintojava;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class KotlinInterOpTests {
+class AddingKotlinToJavaApplicationTests {
 
     @Test
     void contextLoads() {
